@@ -1,0 +1,37 @@
+@startuml
+class app.adapter.MediaAdapter {
+~ IAdvancedLoader advancedLoader
++ void launch(String,String)
+}
+interface app.loader.IAdvancedLoader {
+~ void openJpg(String)
+~ void openPng(String)
+}
+class app.adapter.AdapterPatternDemo {
++ {static} void adapter()
+}
+class app.player.PngPlayer {
++ void openPng(String)
++ void openJpg(String)
+}
+interface app.loader.IMediaLoader {
+~ void launch(String,String)
+}
+class app.Main {
++ {static} void main(String[])
+}
+class app.player.JpgPlayer {
++ void openJpg(String)
++ void openPng(String)
+}
+class app.loader.ImageLoader {
+~ MediaAdapter mediaAdapter
++ void launch(String,String)
+}
+
+
+app.loader.IMediaLoader <|.. app.adapter.MediaAdapter
+app.loader.IAdvancedLoader <|.. app.player.PngPlayer
+app.loader.IAdvancedLoader <|.. app.player.JpgPlayer
+app.loader.IMediaLoader <|.. app.loader.ImageLoader
+@enduml
